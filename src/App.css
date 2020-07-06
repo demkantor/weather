@@ -1,5 +1,5 @@
 :root {
-  --text-primary: ##ffffff;
+  --text-primary: #ffffff;
   --text-secondary: #585676;
   --bg-primary: #100e1d;
   --bg-secondary: #1e213a;
@@ -45,12 +45,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app-wrapper {
+  display: grid;
+  grid-template-columns: minmax(350px, 35%) 1fr;
+  /* padding: 5em; */
+}
+
 .sidebar-container {
-  position: fixed;
   background-color: var(--bg-secondary);
   transition: var(--tran-primary);
   overflow: hidden;
-  top: 0;
-  width: 33vw;
-  height: 100%;
+  width: 100%;
+  height: 100vh;
 }

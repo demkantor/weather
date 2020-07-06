@@ -1,0 +1,8 @@
+.weather-wrapper {
+    color: var(--text-primary);
+    padding: 5em;
+}
+
+.title {
+    color: var(--text-primary);
+}

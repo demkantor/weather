@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/Sidebar/Search';
 import Display from './components/Sidebar/Display';
+import WeatherCard from './components/Card/WeatherCard';
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
               setDisplaySearch={this.setDisplaySearch} />
           }
         </div>
+        <WeatherCard />
       </div>
     )
   }
