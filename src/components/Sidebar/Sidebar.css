@@ -1,0 +1,106 @@
+.search-wrapper {
+    position: relative;
+    display: ruby;
+}
+
+.search-section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 5em 1em;
+}
+
+.field {
+    width: 100%;
+    position: relative;
+    transition: var(--tran-secondary);
+}
+
+.field::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: .4em;
+    width: 100%;
+    background: var(--submit);
+    transform: scaleX(0);
+    transform-origin: 0%;
+    opacity: 0;
+    transition: var(--tran-secondary);
+    top: -.8em;
+}
+
+.field:focus-within {
+    border-color: transparent;
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.search-field {
+    background: var(--bg-secondary);
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    border-radius: .2em;
+    overflow: hidden;
+    margin: 1em 0;
+    width: 100%;
+    line-height: 2;
+    padding: 0.25rem 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: var(--tran-secondary);
+}
+
+.label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    position: absolute;
+    transform: translateY(-3em);
+    transform-origin: 0%;
+    transition: var(--tran-secondary);
+}
+
+.field:focus-within .label,
+.search-field:not(:placeholder-shown) + .label {
+    transform: scale(0.8) translateY(-7rem);
+    opacity: 1;
+}
+
+.search-btn {
+    margin-left: 1em;
+    color: var(--text-secondary);
+    border: .2em solid var(--text-secondary);
+    border-radius: .2em;
+    background: none;
+    height: 3em;
+    width: 8em;
+    transition: var(--tran-primary);
+}
+
+.search-btn:hover, .search-btn:focus {
+    transform: scale(1.1);
+    transition: var(--tran-primary);
+}
+
+.past-search {
+
+}
+
+.exit-btn {
+    border: none;
+    background: none;
+    display: flex;
+    float: right;
+    padding: .5em;
+    font-size: 1.5em;
+    transition: var(--tran-secondary);
+}
+
+.exit-btn:hover, .exit-btn:focus {
+    transform: scale(1.1);
+    transition: var(--tran-secondary);
+}

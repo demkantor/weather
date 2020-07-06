@@ -1,5 +1,5 @@
 ## demkantor's weather app
-    This is a small project that allows users to search for current and five day forcast by locale
+    This is a small project that allows users to search for current and five day forecast by locale
 
 ## Built With
     react
