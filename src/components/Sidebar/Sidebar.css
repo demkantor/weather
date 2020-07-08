@@ -52,26 +52,29 @@
     font-size: 1.2em;
     font-weight: bold;
     transition: var(--tran-secondary);
+    
 }
 
 .label {
     display: block;
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    font-size: .9em;
     position: absolute;
-    transform: translateY(-3em);
+    padding-left: .3em;
+    transform: translateY(-3.5em);
     transform-origin: 0%;
     transition: var(--tran-secondary);
+    pointer-events: none;
 }
 
 .field:focus-within .label,
 .search-field:not(:placeholder-shown) + .label {
-    transform: scale(0.8) translateY(-7rem);
+    transform: scale(0.8)  translateY(-7rem);
     opacity: 1;
 }
 
 .search-btn {
-    margin-left: 1em;
+    margin: 1.4em 0 0 1em;
     color: var(--text-secondary);
     border: .2em solid var(--text-secondary);
     border-radius: .2em;
@@ -87,7 +90,9 @@
 }
 
 .past-search {
-
+    margin: auto;
+    text-align: center;
+    color: var(--text-secondary);
 }
 
 .exit-btn {

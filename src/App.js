@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import './App.css';
+import { fetchData } from './api';
+
 import Search from './components/Sidebar/Search';
 import Display from './components/Sidebar/Display';
 import WeatherCard from './components/Card/WeatherCard';
+import './App.css';
 
 class App extends Component {
 
   state = {
-    displaySearch: true
-  }
+    displaySearch: true,
+    data: {}
+  };
 
   setDisplaySearch = () => {
     this.setState({ displaySearch: !this.state.displaySearch });
-  }
+  };
+
+  fetchLocation = async (search) => {
+    console.log(search);
+    const data = await fetchData(search);
+    this.setState({ data, search });
+  };
 
   render() {
-    const { displaySearch } = this.state;
+    const { displaySearch, data } = this.state;
 
     return (
       <div className="app-wrapper">
@@ -23,10 +32,13 @@ class App extends Component {
           {displaySearch 
           ?
             <Search 
-              setDisplaySearch={this.setDisplaySearch} />
+              setDisplaySearch={this.setDisplaySearch}
+              fetchLocation={this.fetchLocation}
+              data={data} />
           :
             <Display
-              setDisplaySearch={this.setDisplaySearch} />
+              setDisplaySearch={this.setDisplaySearch}
+              data={data} />
           }
         </div>
         <WeatherCard />

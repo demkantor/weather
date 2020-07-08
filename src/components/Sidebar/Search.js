@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 
-const Search = ({ setDisplaySearch }) => {
+const Search = ({ setDisplaySearch, fetchLocation }) => {
     const [search, setSearch] = useState('');
 
-    const fetchQuery = () => {
-        console.log(search)
-    };
+
 
     return (
         <div className="search-wrapper">
@@ -15,28 +13,34 @@ const Search = ({ setDisplaySearch }) => {
                     highlight_off
                 </span> 
             </button>
-            <div className="search-section">
-                <div className="field">
-                    <input 
-                        type="text"
-                        name="search"
-                        value={search}
-                        onChange={(event)=>setSearch(event.target.value)}
-                        className="search-field"  />
-                    <label htmlFor="search" className="label">
-                        City / Region / State / Country
-                    </label>
+            <div className="search-container">
+                <div className="search-section">
+                    <div className="field">
+                        <input 
+                            type="text"
+                            name="search"
+                            value={search}
+                            placeholder=""
+                            onChange={(event)=>setSearch(event.target.value)}
+                            className="search-field"  />
+                        <label htmlFor="search" className="label">
+                            City / Region / State / Country
+                        </label>
+                    </div>
+                    <button 
+                        className="search-btn"
+                        onClick={()=>fetchLocation(search)}>
+                            Search
+                    </button>
                 </div>
-                <button 
-                    className="search-btn"
-                    onClick={fetchQuery}>
-                        Search
-                </button>
+                <div className="past-search">
+                    <h2>something</h2>
+                    <h2>something</h2>
+                    <h2>something</h2>
+                    <h2>something</h2>
+                    <h2>something</h2>
+                </div>
             </div>
-            <div className="past-search">
-
-            </div>
-            
         </div>
     );
 };
