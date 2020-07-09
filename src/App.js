@@ -16,11 +16,22 @@ class App extends Component {
     currentLocation: []
   };
 
-  // fetch weather on app load
-  componentDidMount = () => {
+  // fetch weather on app load by geoloaction or saved in local storage
+  componentDidMount = async () => {
+    const items = await this.getLocal();
+    if(items.length  > 0) {
+      const locale = items[0];
+      this.getWeather({ locale });
+    } else {
+      this.getGeoLocation();
+    };
+  };
+
+  // if unable to get device location then send minnepolis as default
+  error = () => {
     const locale = { title: 'Minneapolis', woeid: 2452078}
     this.getWeather({ locale });
-  };
+  }
 
   // gets weather location via user search input
   fetchLocation = async (search) => {
@@ -34,19 +45,51 @@ class App extends Component {
     };
   };
 
+  // attempts to get location from user device
+  getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.position, this.error);
+    } else {
+      const locale = { title: 'Minneapolis', woeid: 2452078}
+      this.getWeather({ locale });
+    }
+  };
+
+  // fetches local storage 
+  getLocal = () => {
+    return localStorage.getItem("weather-list")
+    ? JSON.parse(localStorage.getItem("weather-list"))
+    : [];
+  };
+  
+
   // gets weather by ID
   getWeather = async ({ locale }) => {
     console.log(locale.title);
     const location = await axios.get(`/weather/${locale.woeid}`);
     await this.setState({ currentLocation: location.data.data });
-    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
-    await this.setState({ searchList: [] });
+    const searchedLocation = { title: location.data.data.title, woeid: location.data.data.woeid}
+    this.setLocal(searchedLocation);
   };
+
+  // if able to get user location by device then set as default
+  position = (location) => {
+    console.log('user location:', location);
+  }
 
   // changes sidebar from daily weather to search location
   setDisplaySearch = () => {
     this.setState({ displaySearch: !this.state.displaySearch });
   };
+
+  // sets local storage list 
+  setLocal = async (locale) => {
+    let localList = this.getLocal();
+    localList.push(locale);
+    localStorage.setItem("weather-list", JSON.stringify(localList));
+    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
+    await this.setState({ searchList: [] });
+  }
 
   render() {
     const { displaySearch, searchList, pastSearch, currentLocation } = this.state;
