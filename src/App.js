@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchData } from './api';
+import axios from 'axios'
 
 import Search from './components/Sidebar/Search';
 import Display from './components/Sidebar/Display';
@@ -19,7 +19,8 @@ class App extends Component {
 
   fetchLocation = async (search) => {
     console.log(search);
-    const data = await fetchData(search);
+    const data = await axios.get(`/weather/${search}`);
+    console.log(data)
     this.setState({ data, search });
   };
 

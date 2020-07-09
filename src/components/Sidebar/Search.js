@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+
 import './Sidebar.css';
 
 const Search = ({ setDisplaySearch, fetchLocation }) => {
-    const [search, setSearch] = useState('');
 
+    const [search, setSearch] = useState('');
 
 
     return (
