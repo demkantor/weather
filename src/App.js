@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    displaySearch: true,
+    displaySearch: false,
     errors: '',
     searchList: [],
     pastSearch: [],
@@ -38,7 +38,6 @@ class App extends Component {
   getWeather = async ({ locale }) => {
     console.log(locale.title);
     const location = await axios.get(`/weather/${locale.woeid}`);
-    console.log(location.data.data)
     await this.setState({ currentLocation: location.data.data });
     await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
     await this.setState({ searchList: [] });
@@ -46,7 +45,6 @@ class App extends Component {
 
   // changes sidebar from daily weather to search location
   setDisplaySearch = () => {
-    console.log('yo')
     this.setState({ displaySearch: !this.state.displaySearch });
   };
 

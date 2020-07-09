@@ -48,7 +48,7 @@ body {
 
 .app-wrapper {
   display: grid;
-  grid-template-columns: minmax(350px, 35%) 1fr;
+  grid-template-columns: minmax(350px, 25%) 1fr;
   /* padding: 5em; */
 }
 

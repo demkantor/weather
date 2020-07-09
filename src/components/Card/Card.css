@@ -1,10 +1,15 @@
 .weather-wrapper {
     color: var(--text-primary);
-    padding: 5em;
+    padding: 2em 4em;
+    overflow-y: hidden;
 }
 
 .title {
     color: var(--text-primary);
+}
+
+.center {
+    text-align: center;
 }
 
 .deg-btn-container {
@@ -34,7 +39,8 @@
 
 .five-day-wrapper {
     display: flex;
-    
+    margin-top: -2em;
+    margin-bottom: -2em;
 }
 
 .day-card {

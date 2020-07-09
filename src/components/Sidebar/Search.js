@@ -9,12 +9,12 @@ const Search = ({ setDisplaySearch, fetchLocation, getWeather, searchList, pastS
 
     return (
         <div className="search-wrapper">
-            <button className="exit-btn" onClick={setDisplaySearch}>
-                <span className="material-icons">
-                    highlight_off
-                </span> 
-            </button>
             <div className="search-container">
+                <button className="exit-btn" onClick={setDisplaySearch}>
+                    <span className="material-icons">
+                        highlight_off
+                    </span> 
+                </button>
                 <div className="search-section">
                     <div className="field">
                         <input 

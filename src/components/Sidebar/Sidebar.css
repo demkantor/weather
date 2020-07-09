@@ -10,6 +10,10 @@
     margin: 5em 1em;
 }
 
+.mr-btm {
+    margin-bottom: 4em;
+}
+
 .field {
     width: 100%;
     position: relative;
@@ -127,6 +131,48 @@
 }
 
 .exit-btn:hover, .exit-btn:focus {
+    transform: scale(1.1);
+    transition: var(--tran-secondary);
+}
+
+.display-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-lg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    color: var(--text-primary);
+    height: 20em;
+    max-width: 20em;
+}
+
+.card-img-lg {
+    padding: 5em 0 0 0;
+    width: 15em;
+    margin-bottom: 2em;
+}
+
+.subtitle {
+    margin-bottom: 0em;
+    text-decoration: none;
+    color: var(--text-secondary);
+}
+
+.demkantor {
+    margin-top: 15em;
+    bottom: 1em;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--tran-secondary);
+}
+
+.demkantor:hover, .demkantor:focus {
     transform: scale(1.1);
     transition: var(--tran-secondary);
 }

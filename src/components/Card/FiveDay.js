@@ -2,7 +2,6 @@ import React from 'react';
 
 const FiveDay = ({ currentLocation, setDay }) => {
 
-    console.log(currentLocation.consolidated_weather)
     return (
         <div className="five-day-wrapper">
             {currentLocation.consolidated_weather
