@@ -10,22 +10,36 @@ class App extends Component {
 
   state = {
     displaySearch: true,
-    data: {}
+    errors: '',
+    searchList: [],
+    pastSearch: [],
+    currentLocation: {}
   };
 
+  getWeather = async (id) => {
+    console.log(id);
+    const location = await axios.get(`/weather/${id}`);
+    console.log(location.data.data)
+} 
+
   setDisplaySearch = () => {
+    console.log('yo')
     this.setState({ displaySearch: !this.state.displaySearch });
   };
 
   fetchLocation = async (search) => {
     console.log(search);
-    const data = await axios.get(`/weather/${search}`);
-    console.log(data)
-    this.setState({ data, search });
+    const searchList = await axios.get(`/weather/search/${search}`);
+    console.log(searchList.data.data)
+    if(searchList.data.data.length === 0) {
+      this.setState({ errors: 'Sorry, nothing found in your search '});
+    } else {
+      this.setState({ searchList: searchList.data.data });
+    };
   };
 
   render() {
-    const { displaySearch, data } = this.state;
+    const { displaySearch, searchList, pastSearch, currentLocation } = this.state;
 
     return (
       <div className="app-wrapper">
@@ -35,11 +49,13 @@ class App extends Component {
             <Search 
               setDisplaySearch={this.setDisplaySearch}
               fetchLocation={this.fetchLocation}
-              data={data} />
+              getWeather={this.getWeather}
+              searchList={searchList} 
+              pastSearch={pastSearch} />
           :
             <Display
               setDisplaySearch={this.setDisplaySearch}
-              data={data} />
+              currentLocation={currentLocation} />
           }
         </div>
         <WeatherCard />

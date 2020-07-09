@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './Sidebar.css';
 
-const Search = ({ setDisplaySearch, fetchLocation }) => {
+const Search = ({ setDisplaySearch, fetchLocation, getWeather, searchList, pastSearch }) => {
 
     const [search, setSearch] = useState('');
 
@@ -34,12 +34,27 @@ const Search = ({ setDisplaySearch, fetchLocation }) => {
                             Search
                     </button>
                 </div>
-                <div className="past-search">
-                    <h2>something</h2>
-                    <h2>something</h2>
-                    <h2>something</h2>
-                    <h2>something</h2>
-                    <h2>something</h2>
+                <div className="search-list">
+                    {searchList.map((locale, i) => (
+                        <h2 key={i} className="list-item" onClick={()=>getWeather(locale.woeid)}>
+                            {locale.title} 
+                            <span className="material-icons">
+                                navigate_next
+                            </span> 
+                        </h2>
+                    ))}
+                </div>
+                <div className="search-list">
+                    <h2 className="list-item">
+                        something
+                        <span className="material-icons">
+                            navigate_next
+                        </span> 
+                    </h2>
+                    <h2 className="list-item">something</h2>
+                    <h2 className="list-item">something</h2>
+                    <h2 className="list-item">something</h2>
+                    <h2 className="list-item">something</h2>
                 </div>
             </div>
         </div>

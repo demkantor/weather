@@ -82,6 +82,7 @@
     height: 3em;
     width: 8em;
     transition: var(--tran-primary);
+    cursor: pointer;
 }
 
 .search-btn:hover, .search-btn:focus {
@@ -89,10 +90,29 @@
     transition: var(--tran-primary);
 }
 
-.past-search {
+.search-list {
     margin: auto;
     text-align: center;
     color: var(--text-secondary);
+    overflow: auto;
+}
+
+.list-item {
+    display: flex;
+    position: relative;
+    border: 1px solid var(--text-secondary);
+    height: 2.5em;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 2em;
+    padding-left: 1em;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.list-item:hover > .material-icons {
+    transition: var(--tran-secondary);
+    transform: rotate(180deg);
 }
 
 .exit-btn {
@@ -103,6 +123,7 @@
     padding: .5em;
     font-size: 1.5em;
     transition: var(--tran-secondary);
+    cursor: pointer;
 }
 
 .exit-btn:hover, .exit-btn:focus {
