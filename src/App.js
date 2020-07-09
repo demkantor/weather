@@ -20,6 +20,7 @@ class App extends Component {
   componentDidMount = async () => {
     const items = await this.getLocal();
     if(items.length  > 0) {
+      this.setState({ pastSearch: items });
       const locale = items[0];
       this.getWeather({ locale });
     } else {
@@ -31,7 +32,7 @@ class App extends Component {
   error = () => {
     const locale = { title: 'Minneapolis', woeid: 2452078}
     this.getWeather({ locale });
-  }
+  };
 
   // gets weather location via user search input
   fetchLocation = async (search) => {
@@ -62,7 +63,6 @@ class App extends Component {
     : [];
   };
   
-
   // gets weather by ID
   getWeather = async ({ locale }) => {
     console.log(locale.title);
@@ -75,7 +75,7 @@ class App extends Component {
   // if able to get user location by device then set as default
   position = (location) => {
     console.log('user location:', location);
-  }
+  };
 
   // changes sidebar from daily weather to search location
   setDisplaySearch = () => {
@@ -85,11 +85,25 @@ class App extends Component {
   // sets local storage list 
   setLocal = async (locale) => {
     let localList = this.getLocal();
-    localList.push(locale);
-    localStorage.setItem("weather-list", JSON.stringify(localList));
-    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
+    console.log(localList)
+    if(localList.length >= 5) {
+      if(localList.some(item => item.title === locale.title)){
+        console.log('more than 5 and same search!');
+      } else {
+        localList.shift()
+        localList.push(locale);
+        localStorage.setItem("weather-list", JSON.stringify(localList));
+        this.setState({ pastSearch: localList });
+      }
+    } else if (localList.some(item => item.title === locale.title)){
+      console.log('already in it!');
+    } else {
+      localList.push(locale);
+      localStorage.setItem("weather-list", JSON.stringify(localList));
+      this.setState({ pastSearch: localList });
+    };
     await this.setState({ searchList: [] });
-  }
+  };
 
   render() {
     const { displaySearch, searchList, pastSearch, currentLocation } = this.state;

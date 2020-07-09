@@ -53,9 +53,6 @@ const Search = ({ setDisplaySearch, fetchLocation, getWeather, searchList, pastS
                             </span> 
                         </h2>
                     ))}
-                    <h2 className="list-item">something</h2>
-                    <h2 className="list-item">something</h2>
-                    <h2 className="list-item">something</h2>
                 </div>
             </div>
         </div>
