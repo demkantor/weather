@@ -61,7 +61,8 @@ class App extends Component {
               currentLocation={currentLocation} />
           }
         </div>
-        <WeatherCard />
+        <WeatherCard 
+          currentLocation={currentLocation} />
       </div>
     )
   }
