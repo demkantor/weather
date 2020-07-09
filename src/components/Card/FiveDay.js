@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FiveDay = ({ currentLocation }) => {
+const FiveDay = ({ currentLocation, setDay }) => {
 
     console.log(currentLocation.consolidated_weather)
     return (
@@ -9,7 +9,7 @@ const FiveDay = ({ currentLocation }) => {
             ?
             <>
                 {currentLocation.consolidated_weather.map((day, i) => (
-                    <div className="day-card" key={day.id}>
+                    <div className="day-card" key={day.id} onClick={()=>setDay(i)}>
                         <p className="title">{day.applicable_date}</p>
                         <img src={`https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg`} alt={day.weather_state_name} className="card-img" /> 
                         <div className="high-low">

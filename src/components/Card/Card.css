@@ -40,7 +40,7 @@
 .day-card {
     margin: 4em 1em;
     background: var(--bg-secondary);
-    width: 10em;
+    width: 8em;
     height: 10em;
     text-align: center;
 }
@@ -61,4 +61,18 @@
 
 .low {
     font-weight: 300;
+}
+
+.card-wrapper {
+    display: grid;
+    grid-template-columns: 25em 25em;
+}
+
+.highlight-card {
+    margin: 1em;
+    height: 12em;
+    width: 22em;
+    background: var(--bg-secondary);
+    text-align: center;
+    justify-content: space-around;
 }
