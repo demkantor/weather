@@ -6,3 +6,59 @@
 .title {
     color: var(--text-primary);
 }
+
+.deg-btn-container {
+    float: right;
+}
+
+.deg-btn {
+    margin-left: 1em;
+    border: none;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    background: var(--text-secondary);
+    color: var(--bg-primary);
+    cursor: pointer;
+    transition: var(--tran-secondary);
+}
+
+.deg-btn:hover, .deg-btn:focus {
+    transition: var(--tran-secondary);
+    transform: scale(1.1);
+}
+
+.selected {
+    background: var(--text-primary);
+}
+
+.five-day-wrapper {
+    display: flex;
+    
+}
+
+.day-card {
+    margin: 4em 1em;
+    background: var(--bg-secondary);
+    width: 10em;
+    height: 10em;
+    text-align: center;
+}
+
+.card-img {
+    max-width: 3em;
+}
+
+.high-low {
+    display: flex;
+    justify-content: space-around;
+    margin: 1em .5em;
+}
+
+.high {
+    font-weight: 900;
+}
+
+.low {
+    font-weight: 300;
+}

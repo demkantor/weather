@@ -16,20 +16,13 @@ class App extends Component {
     currentLocation: []
   };
 
-  getWeather = async ({ locale }) => {
-    console.log(locale.title);
-    const location = await axios.get(`/weather/${locale.woeid}`);
-    console.log(location.data.data)
-    await this.setState({ currentLocation: location.data.data });
-    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
-    await this.setState({ searchList: [] });
+  // fetch weather on app load
+  componentDidMount = () => {
+    const locale = { title: 'Minneapolis', woeid: 2452078}
+    this.getWeather({ locale });
   };
 
-  setDisplaySearch = () => {
-    console.log('yo')
-    this.setState({ displaySearch: !this.state.displaySearch });
-  };
-
+  // gets weather location via user search input
   fetchLocation = async (search) => {
     console.log(search);
     const searchList = await axios.get(`/weather/search/${search}`);
@@ -39,6 +32,22 @@ class App extends Component {
     } else {
       this.setState({ searchList: searchList.data.data });
     };
+  };
+
+  // gets weather by ID
+  getWeather = async ({ locale }) => {
+    console.log(locale.title);
+    const location = await axios.get(`/weather/${locale.woeid}`);
+    console.log(location.data.data)
+    await this.setState({ currentLocation: location.data.data });
+    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
+    await this.setState({ searchList: [] });
+  };
+
+  // changes sidebar from daily weather to search location
+  setDisplaySearch = () => {
+    console.log('yo')
+    this.setState({ displaySearch: !this.state.displaySearch });
   };
 
   render() {

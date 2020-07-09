@@ -7,16 +7,15 @@ import './Card.css';
 const WeatherCard = ({ currentLocation }) => {
     return (
         <div className="weather-wrapper">
-            <h1 className="title">
-                here is your weather!
-            </h1>
             <div className="deg-btn-container">
                 <button className="deg-btn">C</button>
-                <button className="deg-btn">F</button>
+                <button className="deg-btn selected">F</button>
             </div>
             <div className="card-container">
-                <FiveDay />
-                <Highlights />
+                <FiveDay 
+                    currentLocation={currentLocation} />
+                <Highlights 
+                    currentLocation={currentLocation} />
             </div>
         </div>
     );

@@ -1,23 +1,51 @@
 import React from 'react';
 
-const FiveDay = () => {
+const FiveDay = ({ currentLocation }) => {
+
+    console.log(currentLocation.consolidated_weather)
     return (
         <div className="five-day-wrapper">
-            <div className="day-card">
-                monday
-            </div>
-            <div className="day-card">
-                tuesday
-            </div>
-            <div className="day-card">
-                wednesday
-            </div>
-            <div className="day-card">
-                thursday
-            </div>
-            <div className="day-card">
-                friday
-            </div>
+            {currentLocation.consolidated_weather
+            ?
+            <>
+                {currentLocation.consolidated_weather.map((day, i) => (
+                    <div className="day-card" key={day.id}>
+                        <p className="title">{day.applicable_date}</p>
+                        <img src={`https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg`} alt={day.weather_state_name} className="card-img" /> 
+                        <div className="high-low">
+                            <p className="high">
+                                {day.max_temp.toFixed(2)}
+                            </p>
+                            <p className="low">
+                                {day.min_temp.toFixed(2)}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </>
+            :
+            <>
+                <div className="day-card">
+                    monday
+                </div>
+                <div className="day-card">
+                    tuesday
+                </div>
+                <div className="day-card">
+                    wednesday
+                </div>
+                <div className="day-card">
+                    thursday
+                </div>
+                <div className="day-card">
+                    friday
+                </div>
+                <div className="day-card">
+                    saturday
+                </div>
+            </>
+            }
+                
         </div>
     );
 };
