@@ -13,14 +13,17 @@ class App extends Component {
     errors: '',
     searchList: [],
     pastSearch: [],
-    currentLocation: {}
+    currentLocation: []
   };
 
-  getWeather = async (id) => {
-    console.log(id);
-    const location = await axios.get(`/weather/${id}`);
+  getWeather = async ({ locale }) => {
+    console.log(locale.title);
+    const location = await axios.get(`/weather/${locale.woeid}`);
     console.log(location.data.data)
-} 
+    await this.setState({ currentLocation: location.data.data });
+    await this.setState({ pastSearch: [...this.state.pastSearch, locale ]});
+    await this.setState({ searchList: [] });
+  };
 
   setDisplaySearch = () => {
     console.log('yo')

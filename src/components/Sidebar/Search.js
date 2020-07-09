@@ -36,7 +36,7 @@ const Search = ({ setDisplaySearch, fetchLocation, getWeather, searchList, pastS
                 </div>
                 <div className="search-list">
                     {searchList.map((locale, i) => (
-                        <h2 key={i} className="list-item" onClick={()=>getWeather(locale.woeid)}>
+                        <h2 key={i} className="list-item" onClick={()=>getWeather({ locale })}>
                             {locale.title} 
                             <span className="material-icons">
                                 navigate_next
@@ -45,13 +45,14 @@ const Search = ({ setDisplaySearch, fetchLocation, getWeather, searchList, pastS
                     ))}
                 </div>
                 <div className="search-list">
-                    <h2 className="list-item">
-                        something
-                        <span className="material-icons">
-                            navigate_next
-                        </span> 
-                    </h2>
-                    <h2 className="list-item">something</h2>
+                    {pastSearch.map((locale, i) => (
+                        <h2 key={i} className="list-item" onClick={()=>getWeather({ locale })}>
+                            {locale.title} 
+                            <span className="material-icons">
+                                navigate_next
+                            </span> 
+                        </h2>
+                    ))}
                     <h2 className="list-item">something</h2>
                     <h2 className="list-item">something</h2>
                     <h2 className="list-item">something</h2>
