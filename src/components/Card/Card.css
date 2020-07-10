@@ -1,6 +1,6 @@
 .weather-wrapper {
     color: var(--text-primary);
-    padding: 2em 4em;
+    padding: 2em 2em 0 2em;
     overflow-y: hidden;
 }
 
@@ -46,9 +46,9 @@
 }
 
 .five-day-wrapper {
-    display: flex;
-    margin-top: -2em;
-    margin-bottom: -2em;
+    display: grid;
+    grid-template-columns: 9em 9em 9em 9em 9em;
+    gap: .7em;
 }
 
 .day-card {
@@ -60,7 +60,7 @@
 }
 
 .card-img {
-    max-width: 3em;
+    width: 3em;
 }
 
 .high-low {
@@ -80,10 +80,12 @@
 .card-wrapper {
     display: grid;
     grid-template-columns: 25em 25em;
+    grid-template-rows: 13em 13em;
+    row-gap: 0;
 }
 
 .highlight-card {
-    margin: 1em;
+    /* margin: 1em; */
     height: 12em;
     width: 22em;
     background: var(--bg-secondary);
@@ -151,3 +153,40 @@ progress[value] {
     border: var(--bg-secondary);
     border-radius: 2em;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .weather-wrapper {
+        padding: 1em;
+        margin: 1em;overflow: hidden;
+    }
+
+    .five-day-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .day-card {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 1em;
+        padding: 0;
+    }
+
+    .card-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .highlight-card {
+        margin: 0;
+        margin-bottom: 1em;
+        width: 100%;
+    }
+  
+  }

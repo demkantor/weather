@@ -14,8 +14,6 @@ html {
   margin: 0;
   padding: 0;
   background: var(--bg-primary);
-  height: 100vh;
-  width: 100vw;
   box-sizing: border-box;
 }
 
@@ -49,7 +47,6 @@ body {
 .app-wrapper {
   display: grid;
   grid-template-columns: minmax(21em, 25%) 1fr;
-  /* padding: 5em; */
 }
 
 .sidebar-container {
@@ -78,3 +75,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 600px) {
+
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+}

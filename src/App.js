@@ -73,6 +73,7 @@ class App extends Component {
   getWeather = async ({ locale }) => {
     // console.log(locale.title);
     const location = await axios.get(`/weather/${locale.woeid}`);
+    location.data.data.consolidated_weather.pop()
     console.log(location.data.data)
     await this.setState({ currentLocation: location.data.data });
     const searchedLocation = { title: location.data.data.title, woeid: location.data.data.woeid}
