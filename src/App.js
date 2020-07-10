@@ -44,7 +44,7 @@ class App extends Component {
   fetchLocation = async (search) => {
     console.log(search);
     const searchList = await axios.get(`/weather/search/${search}`);
-    console.log(searchList.data.data)
+    // console.log(searchList.data.data)
     if(searchList.data.data.length === 0) {
       this.setState({ errors: 'Sorry, nothing found in your search '});
     } else {
@@ -71,8 +71,9 @@ class App extends Component {
   
   // gets weather by ID
   getWeather = async ({ locale }) => {
-    console.log(locale.title);
+    // console.log(locale.title);
     const location = await axios.get(`/weather/${locale.woeid}`);
+    console.log(location.data.data)
     await this.setState({ currentLocation: location.data.data });
     const searchedLocation = { title: location.data.data.title, woeid: location.data.data.woeid}
     this.setLocal(searchedLocation);

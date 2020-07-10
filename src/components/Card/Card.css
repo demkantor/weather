@@ -12,6 +12,14 @@
     text-align: center;
 }
 
+.bold {
+    font-size: 4em;
+    font-weight: 900;
+}
+.sml {
+    font-size: small;
+}
+
 .deg-btn-container {
     float: right;
 }
@@ -81,4 +89,53 @@
     background: var(--bg-secondary);
     text-align: center;
     justify-content: space-around;
+}
+
+.card-item {
+    margin: 0.3em;
+    padding: 0;
+}
+
+.mr-rgt {
+    margin-right: .5em;
+}
+
+.circle {
+    border-radius: 50%;
+    background: var(--text-secondary);
+    padding: .2em;
+}
+
+.fix-align {
+    display: inline-flex;
+    align-items: center;
+}
+
+hr {
+    margin: 1em;
+    height: 150px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+    border-radius: 130px 0px 0px 0px;
+    border-top: 1px dashed var(--text-secondary);
+    margin-right:130px;
+}
+
+hr::before {
+    display: block;
+    content: "";
+    height: 150px;
+    margin-top: -151px;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 1px 0;
+    border-radius: 0px 0px 130px 0px;
+	margin-left:130px;
+	margin-right:-130px;
+	border-bottom: 1px dashed var(--text-secondary);
+}
+
+.negative {
+    margin-top: -9em;
 }

@@ -7,9 +7,23 @@ const Highlights = ({ currentLocation, day }) => {
             {currentLocation.consolidated_weather &&
                 <div className="card-wrapper">
                     <div className="highlight-card">
-                        <p>Wind</p>
-                        <p>{currentLocation.consolidated_weather[day].wind_direction_compass}</p>
-                        <p>{currentLocation.consolidated_weather[day].wind_speed.toFixed(0)}{" MPH"}</p>
+                        <h3 className="card-item">Wind</h3>
+                        <div className="card-item">
+                            <p className="card-item bold">
+                                {currentLocation.consolidated_weather[day].wind_speed.toFixed(0)}
+                                <span className="sml">
+                                    {" MPH"}
+                                </span>
+                            </p> 
+                        </div>
+                        <p className="card-item fix-align">
+                            <span 
+                                className="material-icons mr-rgt circle" 
+                                style={{transform: `rotate(${currentLocation.consolidated_weather[day].wind_direction -90}deg)`}}>
+                                arrow_right_alt
+                            </span> 
+                            {currentLocation.consolidated_weather[day].wind_direction_compass}
+                        </p>
                     </div>
                     <div className="highlight-card">
                         <p>Humidity</p>
@@ -17,8 +31,9 @@ const Highlights = ({ currentLocation, day }) => {
                     </div>
                     <div className="highlight-card">
                         <p>Sunrise / Sunset</p>
-                        <p>{"sun rise: "}{currentLocation.sun_rise}</p>
-                        <p>{"sun set: "}{currentLocation.sun_set}</p>
+                        <p>{(currentLocation.sun_rise).substr(11,5)}{" am"}</p>
+                        <hr/>
+                        <p className="negative">{currentLocation.sun_set.substr(11,5)}{" pm"}</p>
                     </div>
                     <div className="highlight-card">
                         <p>Air Pressure</p>
