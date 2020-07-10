@@ -10,6 +10,7 @@ class App extends Component {
 
   state = {
     displaySearch: false,
+    celsius: false,
     errors: '',
     searchList: [],
     pastSearch: [],
@@ -27,6 +28,11 @@ class App extends Component {
       this.getGeoLocation();
     };
   };
+
+  // flip between celsius and fahrenheit
+  degrees = (degree) => {
+    this.setState({ celsius: degree });
+  }
 
   // if unable to get device location then send minnepolis as default
   error = () => {
@@ -82,23 +88,25 @@ class App extends Component {
     this.setState({ displaySearch: !this.state.displaySearch });
   };
 
-  // sets local storage list 
+  // sets local storage list
   setLocal = async (locale) => {
     let localList = this.getLocal();
-    console.log(localList)
+    // if local storage list is five or more than ignore unless new search
     if(localList.length >= 5) {
       if(localList.some(item => item.title === locale.title)){
         console.log('more than 5 and same search!');
+        // if local storage list does not contain query, remove oldest and add new query
       } else {
-        localList.shift()
-        localList.push(locale);
+        localList.pop()
+        localList.unshift(locale);
         localStorage.setItem("weather-list", JSON.stringify(localList));
         this.setState({ pastSearch: localList });
-      }
+      };
+      // if local storage is 
     } else if (localList.some(item => item.title === locale.title)){
       console.log('already in it!');
     } else {
-      localList.push(locale);
+      localList.unshift(locale);
       localStorage.setItem("weather-list", JSON.stringify(localList));
       this.setState({ pastSearch: localList });
     };
@@ -106,7 +114,7 @@ class App extends Component {
   };
 
   render() {
-    const { displaySearch, searchList, pastSearch, currentLocation } = this.state;
+    const { displaySearch, searchList, pastSearch, currentLocation, celsius } = this.state;
 
     return (
       <div className="app-wrapper">
@@ -122,11 +130,14 @@ class App extends Component {
           :
             <Display
               setDisplaySearch={this.setDisplaySearch}
-              currentLocation={currentLocation} />
+              currentLocation={currentLocation} 
+              celsius={celsius} />
           }
         </div>
         <WeatherCard 
-          currentLocation={currentLocation} />
+          currentLocation={currentLocation} 
+          celsius={celsius} 
+          degrees={this.degrees} />
       </div>
     )
   }

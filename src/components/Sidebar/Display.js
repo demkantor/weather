@@ -1,7 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
 
-const Display = ({ currentLocation, setDisplaySearch }) => {
+const Display = ({ currentLocation, setDisplaySearch, celsius }) => {
     return (
         <div className="display-wrapper">
             <div className="center mr-btm">
@@ -21,8 +21,19 @@ const Display = ({ currentLocation, setDisplaySearch }) => {
                     alt={currentLocation.consolidated_weather[0].weather_state_name} 
                     className="card-img-lg" /> 
                 <p className="subtitle">{currentLocation.consolidated_weather[0].weather_state_name}</p>
-                <p className="subtitle">{"High "}{currentLocation.consolidated_weather[0].max_temp.toFixed(0)}</p>
-                <p className="subtitle">{"Low "}{currentLocation.consolidated_weather[0].min_temp.toFixed(0)}</p>
+                {celsius 
+                ?
+                <>
+                    <p className="subtitle">{"High "}{currentLocation.consolidated_weather[0].max_temp.toFixed(0)}{"°"}</p>
+                    <p className="subtitle">{"Low "}{currentLocation.consolidated_weather[0].min_temp.toFixed(0)}{"°"}</p>
+                </>
+                :
+                <>
+                    <p className="subtitle">{"High "}{((currentLocation.consolidated_weather[0].max_temp)* 9 / 5 + 32).toFixed(0)}{"°"}</p>
+                    <p className="subtitle">{"Low "}{((currentLocation.consolidated_weather[0].min_temp)* 9 / 5 + 32).toFixed(0)}{"°"}</p>
+                </>
+                }
+                
                 </div>
             </>
             }

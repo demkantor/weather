@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FiveDay = ({ currentLocation, setDay }) => {
+const FiveDay = ({ currentLocation, setDay, celsius }) => {
 
     return (
         <div className="five-day-wrapper">
@@ -12,12 +12,27 @@ const FiveDay = ({ currentLocation, setDay }) => {
                         <p className="title">{day.applicable_date}</p>
                         <img src={`https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg`} alt={day.weather_state_name} className="card-img" /> 
                         <div className="high-low">
-                            <p className="high">
-                                {day.max_temp.toFixed(2)}
-                            </p>
-                            <p className="low">
-                                {day.min_temp.toFixed(2)}
-                            </p>
+                            {celsius
+                            ?
+                            <>
+                                <p className="high">
+                                    {day.max_temp.toFixed(0)}{"°"}
+                                </p>
+                                <p className="low">
+                                    {day.min_temp.toFixed(0)}{"°"}
+                                </p>
+                            </>
+                            :
+                            <>
+                                <p className="high">
+                                    {(day.max_temp * 9 / 5 + 32).toFixed(0)}{"°"}
+                                </p>
+                                <p className="low">
+                                    {(day.min_temp * 9 / 5 + 32).toFixed(0)}{"°"}
+                                </p>
+                            </>
+                        }
+
                         </div>
                     </div>
                 ))}
