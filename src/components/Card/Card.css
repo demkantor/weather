@@ -48,7 +48,7 @@
 .five-day-wrapper {
     display: grid;
     grid-template-columns: 9em 9em 9em 9em 9em;
-    gap: .7em;
+    gap: .5em;
 }
 
 .day-card {

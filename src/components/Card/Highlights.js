@@ -3,8 +3,17 @@ import React from 'react';
 const Highlights = ({ currentLocation, day }) => {
     return (
         <div className="highlight-wrapper">
-            <h1 className="title">Today's Highlights</h1>
             {currentLocation.consolidated_weather &&
+            <>
+                
+                <h1 className="title">
+                    {day === 0
+                    ?
+                        "Today's Highlights"
+                    :
+                        `${new Date(currentLocation.consolidated_weather[day].applicable_date).toLocaleDateString('en-US', { weekday: 'long' })}'s Highlights`
+                    }
+                </h1>
                 <div className="card-wrapper">
                     <div className="highlight-card">
                         <h3 className="card-item">Wind</h3>
@@ -55,6 +64,7 @@ const Highlights = ({ currentLocation, day }) => {
                         </div>
                     </div>
                 </div>
+            </>
             }
         </div>
     );
