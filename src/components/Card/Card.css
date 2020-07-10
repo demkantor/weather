@@ -17,7 +17,7 @@
     font-weight: 900;
 }
 .sml {
-    font-size: small;
+    font-size: .5em;
 }
 
 .deg-btn-container {
@@ -138,4 +138,16 @@ hr::before {
 
 .negative {
     margin-top: -9em;
+}
+
+progress,
+progress::-moz-progress-bar {
+    background: var(--bg-primary);
+    border-radius: 2em;
+}
+
+progress[value] {
+    background: var(--text-secondary);
+    border: var(--bg-secondary);
+    border-radius: 2em;
 }

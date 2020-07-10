@@ -26,8 +26,16 @@ const Highlights = ({ currentLocation, day }) => {
                         </p>
                     </div>
                     <div className="highlight-card">
-                        <p>Humidity</p>
-                        <p>{currentLocation.consolidated_weather[day].humidity.toFixed(0)}{"%"}</p>
+                        <h3 className="card-item">Humidity</h3>
+                        <div className="card-item">
+                            <p className="card-item bold">
+                                {currentLocation.consolidated_weather[day].humidity.toFixed(0)}
+                                <span className="sml">
+                                    {" %"}
+                                </span>
+                            </p> 
+                        </div>
+                        <progress value={currentLocation.consolidated_weather[day].humidity.toFixed(0)} max='100'></progress>
                     </div>
                     <div className="highlight-card">
                         <p>Sunrise / Sunset</p>
@@ -36,8 +44,15 @@ const Highlights = ({ currentLocation, day }) => {
                         <p className="negative">{currentLocation.sun_set.substr(11,5)}{" pm"}</p>
                     </div>
                     <div className="highlight-card">
-                        <p>Air Pressure</p>
-                        <p>{currentLocation.consolidated_weather[day].air_pressure.toFixed(0)}{" mb"}</p>
+                        <h3 className="card-item">Air Pressure</h3>
+                        <div className="card-item">
+                            <p className="card-item bold">
+                                {currentLocation.consolidated_weather[day].air_pressure.toFixed(0)}
+                                <span className="sml">
+                                    {" mb"}
+                                </span>
+                            </p> 
+                        </div>
                     </div>
                 </div>
             }
