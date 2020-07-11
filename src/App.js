@@ -42,7 +42,7 @@ class App extends Component {
 
   // gets weather location via user search input
   fetchLocation = async (search) => {
-    console.log(search);
+    // console.log(search);
     const searchList = await axios.get(`/weather/search/${search}`);
     // console.log(searchList.data.data)
     if(searchList.data.data.length === 0) {
@@ -74,7 +74,7 @@ class App extends Component {
     // console.log(locale.title);
     const location = await axios.get(`/weather/${locale.woeid}`);
     location.data.data.consolidated_weather.pop()
-    console.log(location.data.data)
+    // console.log(location.data.data);
     await this.setState({ currentLocation: location.data.data });
     const searchedLocation = { title: location.data.data.title, woeid: location.data.data.woeid}
     this.setLocal(searchedLocation);
@@ -96,7 +96,8 @@ class App extends Component {
     // if local storage list is five or more than ignore unless new search
     if(localList.length >= 5) {
       if(localList.some(item => item.title === locale.title)){
-        console.log('more than 5 and same search!');
+        return
+        // console.log('more than 5 and same search!');
         // if local storage list does not contain query, remove oldest and add new query
       } else {
         localList.pop()
@@ -106,7 +107,8 @@ class App extends Component {
       };
       // if local storage is 
     } else if (localList.some(item => item.title === locale.title)){
-      console.log('already in it!');
+      return
+      // console.log('already in it!');
     } else {
       localList.unshift(locale);
       localStorage.setItem("weather-list", JSON.stringify(localList));

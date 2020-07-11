@@ -12,11 +12,11 @@ router.get('/search/:search', async (req,res)=>{
     const location = req.params.search
 
     dynamicURL = `${url}/location/search/?query=${location}`
-    console.log(dynamicURL)
+    // console.log(dynamicURL);
 
     try {
         const search = await axios.get(dynamicURL);
-        console.log(search.data);
+        // console.log(search.data);
         return res.status(200).json({
             success: true,
             data: search.data
@@ -35,11 +35,11 @@ router.get('/:id', async (req,res)=>{
     const location = req.params.id
 
     dynamicURL = `${url}/location/${location}`
-    console.log(dynamicURL)
+    // console.log(dynamicURL);
 
     try {
         const search = await axios.get(dynamicURL);
-        console.log(search.data);
+        // console.log(search.data);
         return res.status(200).json({
             success: true,
             data: search.data

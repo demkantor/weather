@@ -4,6 +4,14 @@
 ### Screenshot
 ![Screenshot](/public/images/screenshot.png?raw=true "screenshot")
 
+## Feel free to fork and change to your liking
+    only dev dependencies are nodemon and concurrently, feel to change script if you dont want use them - 
+
+    fork / download zip
+    npm install
+    npm run dev
+
+
 ## Built With
     react
     javascript

@@ -9,7 +9,7 @@ const FiveDay = ({ currentLocation, setDay, celsius }) => {
             <>
                 {currentLocation.consolidated_weather.map((day, i) => (
                     <div className="day-card" key={day.id} onClick={()=>setDay(i)}>
-                        <p className="title">{new Date(day.applicable_date).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                        <p className="title">{new Date(day.applicable_date).toLocaleDateString(undefined, { weekday: 'long', timeZone: 'UTC' })}</p>
                         <img src={`https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg`} alt={day.weather_state_name} className="card-img" /> 
                         <div className="high-low">
                             {celsius

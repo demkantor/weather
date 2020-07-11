@@ -11,7 +11,7 @@ const Highlights = ({ currentLocation, day }) => {
                     ?
                         "Today's Highlights"
                     :
-                        `${new Date(currentLocation.consolidated_weather[day].applicable_date).toLocaleDateString('en-US', { weekday: 'long' })}'s Highlights`
+                        `${new Date(currentLocation.consolidated_weather[day].applicable_date).toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' })}'s Highlights`
                     }
                 </h1>
                 <div className="card-wrapper">
